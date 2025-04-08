@@ -2,8 +2,14 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
+import download_model
 
+with open('movie_dict.pkl', 'rb') as f:
+    movies_dict = pickle.load(f)
 
+with open('similarity.pkl', 'rb') as f:
+    similarity = pickle.load(f)
+    
 def fetch_poster(movie_id):
    try:
       response = requests.get(
